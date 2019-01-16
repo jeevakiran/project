@@ -1,0 +1,194 @@
+<html>
+    <head>
+        <title>Registration Page</title>
+        <link rel="icon" href="beach.jpg">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    </head>
+    <body background="pexels.jpeg">
+        <div class="container">
+            <div class="row">
+                
+
+            
+                             <br><br>
+                <div class="horizontal-form">
+                    <div class="form-group">
+                        <label class="text-primary font-italic">First Name </label>
+                        <input type="text" id="t1" class="form-control" placeholder="First Name" onblur="func4()" required>
+                        <div id="fname"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="text-primary font-italic">Last Name </label>
+                        <input type="text" id="t2" class="form-control" placeholder="Last Name" onblur="func5()" required >
+                        <div id="lname"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="text-primary font-italic">Username </label>
+                        <input type="text" id="t3" class="form-control" placeholder="UserName" onblur="func1()" required>
+                        <div id="uname"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="text-primary font-italic">E-mail</label>
+                        <input type="text" id="t4" class="form-control" placeholder="E-mail" onblur="func6()" required>
+                        <div id="email"></div>
+                    </div>
+                   
+                    <div class="form-group">
+                        <label class="text-primary font-italic">Password</label>
+                        <input type="password" id="t5" class="form-control" placeholder="Password" name="pass" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="text-primary font-italic">Con-Password</label>
+                        <input type="password" id="t6" class="form-control" placeholder="Con-Password" onblur="func2()" name="conpass" required>
+                        <div id="conpas"></div>
+                    </div>
+                       
+                    <div class="form-group">
+                        <label class="text-primary font-italic">Phone</label>
+                        <input type="text"  class="form-control" id="t7" placeholder="Number" onblur="func3()"  required>
+                        <div id="mob"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="text-primary font-italic">Gender</label><br>
+                        <label class="text-primary font-italic">Male</label>&nbsp;<input type="radio" id="t6" name="r1" required>&nbsp;&nbsp;&nbsp;
+                        <label class="text-primary font-italic">Fe-Male</label>&nbsp;<input type="radio" id="t6" name="r1"> 
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" id="s" class="btn btn-danger" onclick="loadDoc()">
+                    </div>
+                    <div class="form-group">
+                        <a href="login.html" class="btn">Login Here</a>
+                    </div>
+        </div> 
+        
+        <script>
+       
+          function func1()
+          {
+              var user = document.getElementById("t3").value;
+              if(user.length <7)
+              {
+                  document.getElementById("uname").style.color = "#ff0000"; 
+                  document.getElementById("uname").innerHTML= "User should above 7 digits";   
+              }
+              else
+              {
+                  document.getElementById("uname").innerHTML= "";
+              }
+          }
+          function  func2()
+          {
+              var pass = document.f1.pass.value;
+              var conpass = document.f1.conpass.value;
+              if(pass==conpass)
+              {
+                  document.getElementById("conpas").innerHTML= "";
+              }
+              else
+              {
+                        document.getElementById("conpas").style.color = "#ff0000";
+                        document.getElementById("conpas").innerHTML= "pass and con-pass must match";
+              }    
+          }
+          function func3()
+          {
+              var mob = document.getElementById("t7").value;
+              var len = mob.length;
+              if(len != 10)
+              {
+                  document.getElementById("mob").style.color = "#ff0000";
+                  document.getElementById("mob").innerHTML= "Number should be only 10 digits";
+              }
+              else
+              {
+                   document.getElementById("mob").innerHTML= "";
+              }
+          }
+          
+          function  func6()
+          {
+              var email = document.getElementById("t4").value;
+              var atposition=email.indexOf("@");  
+              var dotposition=email.lastIndexOf(".");
+              if (atposition<1 || dotposition<atposition+2 || dotposition+2>=email.length)
+              {  
+                     document.getElementById("email").style.color = "#ff0000";
+                     document.getElementById("email").innerHTML= "Please enter a valid e-mail address";
+              }
+              else
+              {
+                  document.getElementById("email").innerHTML= "";
+              }    
+          }
+          
+          function  func4()
+          {
+            var fn = document.getElementById("t1").value;    
+            if (!fn.match(/^[a-zA-Z]+$/)) 
+            {
+                  document.getElementById("fname").style.color = "#ff0000";
+                   document.getElementById("fname").innerHTML= "Only alphabets are allowed";
+            }
+            else
+            {
+                document.getElementById("fname").innerHTML= "";
+            }
+          }
+          function  func5()
+          {
+            var ln = document.getElementById("t2").value;    
+            if (!ln.match(/^[a-zA-Z]+$/)) 
+            {
+                    document.getElementById("lname").style.color = "#ff0000";
+                    document.getElementById("lname").innerHTML= "Only alphabets are allowed";
+            }
+            else
+            {
+                document.getElementById("lname").innerHTML= "";
+            }   
+          }
+          
+          function loadDoc() 
+          {
+              var fn = document.getElementById("t1").value;
+              var ln = document.getElementById("t2").value;
+              var user = document.getElementById("t3").value;
+              var email = document.getElementById("t4").value;
+              var pass = document.getElementById("t5").value;
+              var gen = document.getElementById("t6").value;
+              var mob = document.getElementById("t7").value;
+              
+              var data = 
+                      {
+                  
+                        "fname" :fn,
+                        "lname":ln,
+                        "uname" :user,
+                        "email" :email,
+                        "password":pass,
+                        "phone":mob,
+                        "gen" :gen
+                       }
+              var json= JSON.stringify(data);
+              var ms = new XMLHttpRequest();
+              ms.onreadystatechange = function ()
+              {
+                 if (this.readyState === 4 && this.status === 200) 
+                    {
+                        alert(this.responseText);
+                        
+                    } 
+              };
+              var url = "http://localhost:8080/sri/add";
+              ms.open("POST",url,true);
+              ms.setRequestHeader('Content-type','application/json; charset=utf-8');
+              ms.send(json);
+          }
+          
+        </script>  
+        
+        
+    </body>    
+</html>
